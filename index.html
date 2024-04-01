@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Terminated</title>
-    <meta name="theme-color" content="black">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Since March 28, 2023</title>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+    }
 
-        div {
-            width: 100%;
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
+    .container {
+        text-align: center;
+    }
 
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+    h1 {
+        font-size: 24px;
+        color: #333;
+    }
 
-        @media screen and (min-width: 600px) {
-            /* Adjust styles for screens wider than 600px (e.g., desktop) */
-            div {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-        }
-    </style>
+    #timer {
+        font-size: 20px;
+        color: #555;
+    }
+</style>
+<script>
+    function updateTime() {
+        const startDate = new Date("March 28, 2023 00:00:00").getTime();
+        const now = new Date().getTime();
+        const distance = now - startDate;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        setTimeout(updateTime, 1000);
+    }
+</script>
 </head>
+<body onload="updateTime()">
 
-<body>
-    <div>
-        <img src="notice.png" alt="Website Terminated">
-    </div>
+<div class="container">
+    <h1>Time Since March 28, 2023</h1>
+    <p id="timer"></p>
+</div>
+
 </body>
-
 </html>
